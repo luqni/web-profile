@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammad Luqni Baehaqi | Software Engineer</title>
-    <meta name="description"
+    <title data-i18n="title">Muhammad Luqni Baehaqi | Software Engineer</title>
+    <meta name="description" data-i18n="description"
         content="Portfolio of Muhammad Luqni Baehaqi, a Software Engineer creator of FastingMate, Qanaah, and Demi Pena.">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -21,47 +21,59 @@
     <div class="container">
         <header>
             <div class="logo">Luqni Baehaqi</div>
-            <a href="https://linkedin.com/in/muhammad-luqni-baehaqi" target="_blank" class="btn btn-sm">Let's
-                Connect</a>
+            <div class="header-controls">
+                <button id="theme-toggle" class="btn btn-sm btn-icon">☀️</button>
+                <button id="lang-toggle" class="btn btn-sm btn-icon">ID</button>
+                <a href="https://linkedin.com/in/muhammad-luqni-baehaqi" target="_blank" class="btn btn-sm"
+                    data-i18n="lets_connect">Let's Connect</a>
+            </div>
         </header>
 
         <section class="hero">
             <div class="hero-content">
-                <div class="availability-badge">✨ Open for Freelance & Collaboration</div>
-                <h1>Hi, I'm <br><span>Muhammad Luqni Baehaqi</span></h1>
-                <p class="hero-subtitle">
+                <div class="availability-badge" data-i18n="availability">✨ Open for Freelance & Collaboration</div>
+                <h1><span data-i18n="hero_greeting">Hi, I'm</span> <br><span>Muhammad Luqni Baehaqi</span></h1>
+                <p class="hero-subtitle" data-i18n="hero_subtitle">
                     A passionate Software Engineer and Problem Solver specializing in building robust web applications
                     and AI-driven automation.
                     I turn complex problems into elegant, scalable digital solutions.
                 </p>
                 <div class="hero-cta">
-                    <a href="#projects" class="btn btn-primary">View My Work</a>
-                    <a href="https://linkedin.com/in/muhammad-luqni-baehaqi" target="_blank"
-                        class="btn btn-outline">Hire Me</a>
+                    <a href="#projects" class="btn btn-primary" data-i18n="view_work">View My Work</a>
+                    <a href="https://linkedin.com/in/muhammad-luqni-baehaqi" target="_blank" class="btn btn-outline"
+                        data-i18n="hire_me">Hire Me</a>
                 </div>
             </div>
         </section>
 
         <section class="skills">
-            <h2 class="section-title">Tech Stack & Expertise</h2>
+            <h2 class="section-title" data-i18n="tech_stack">Tech Stack & Expertise</h2>
             <div class="skills-grid">
                 <div class="skill-item">Laravel</div>
+                <div class="skill-item">Springboot</div>
                 <div class="skill-item">Python</div>
+                <div class="skill-item">Java</div>
+                <div class="skill-item">PHP</div>
                 <div class="skill-item">Golang</div>
                 <div class="skill-item">AI Automation</div>
+                <div class="skill-item">N8N</div>
+                <div class="skill-item">DevOps</div>
+                <div class="skill-item">AI Implementator</div>
+                <div class="skill-item">Computer Vision</div>
                 <div class="skill-item">Problem Solving</div>
             </div>
         </section>
 
         <section id="projects" class="projects">
-            <h2 class="section-title">Featured Projects</h2>
+            <h2 class="section-title" data-i18n="featured_projects">Featured Projects</h2>
             <div class="project-grid">
 
                 <!-- FastingMate -->
                 <article class="project-card">
                     <div class="project-icon">🌙</div>
                     <h3 class="project-title">FastingMate</h3>
-                    <p class="project-desc">FastingMate is a modern web application that helps Muslim women manage their
+                    <p class="project-desc" data-i18n="fastingmate_desc">FastingMate is a modern web application that
+                        helps Muslim women manage their
                         Ramadan fasting debts with peace of mind and a plan. The app is designed to record, schedule,
                         and track Qadha fasts, as well as automatically calculate Fidyah obligations.</p>
                     <div class="project-tags">
@@ -69,18 +81,26 @@
                         <span class="tag">Productivity</span>
                         <span class="tag">Lifestyle</span>
                     </div>
+                    <div class="project-action">
+                        <span class="badge-launching" data-i18n="launching_soon">🚀 Launching Soon</span>
+                    </div>
                 </article>
 
                 <!-- Qanaah -->
                 <article class="project-card">
                     <div class="project-icon">🤲</div>
                     <h3 class="project-title">Qanaah</h3>
-                    <p class="project-desc">Qanaah is a simple open-source application for recording, monitoring, and
+                    <p class="project-desc" data-i18n="qanaah_desc">Qanaah is a simple open-source application for
+                        recording, monitoring, and
                         managing family expenses.</p>
                     <div class="project-tags">
                         <span class="tag">Progressive Web App</span>
                         <span class="tag">Financial Recording</span>
                         <span class="tag">Family Budgeting</span>
+                    </div>
+                    <div class="project-action">
+                        <a href="https://qonaah.luqni.my.id" target="_blank" class="btn btn-sm btn-project"
+                            data-i18n="visit_project">Visit Project</a>
                     </div>
                 </article>
 
@@ -88,22 +108,28 @@
                 <article class="project-card">
                     <div class="project-icon">✒️</div>
                     <h3 class="project-title">Demi Pena</h3>
-                    <p class="project-desc">Demi Pena is a modern note-taking app designed specifically with Islamic
+                    <p class="project-desc" data-i18n="demipena_desc">Demi Pena is a modern note-taking app designed
+                        specifically with Islamic
                         features to make it easier to record knowledge, Quranic contemplation, and hadith.</p>
                     <div class="project-tags">
                         <span class="tag">Progressive Web App</span>
                         <span class="tag">Islamic Content</span>
                         <span class="tag">Note Taking</span>
                     </div>
+                    <div class="project-action">
+                        <span class="badge-launching" data-i18n="launching_soon">🚀 Launching Soon</span>
+                    </div>
                 </article>
             </div>
         </section>
 
         <section class="cta-section">
-            <h2>Ready to build something amazing?</h2>
-            <p>I offer professional services in website creation, custom app development, and AI automation solutions.
+            <h2 data-i18n="cta_title">Ready to build something amazing?</h2>
+            <p data-i18n="cta_desc">I offer professional services in website creation, custom app development, and AI
+                automation solutions.
                 Let's solve your business challenges together.</p>
-            <a href="https://linkedin.com/in/muhammad-luqni-baehaqi" target="_blank" class="btn btn-primary">Contact Me
+            <a href="https://linkedin.com/in/muhammad-luqni-baehaqi" target="_blank" class="btn btn-primary"
+                data-i18n="contact_linkedin">Contact Me
                 on LinkedIn</a>
         </section>
 
@@ -111,14 +137,16 @@
             <div class="social-links">
                 <a href="https://linkedin.com/in/muhammad-luqni-baehaqi" target="_blank"
                     class="social-link">LinkedIn</a>
-                <a href="https://github.com/luqnibaehaqi" target="_blank" class="social-link">GitHub</a>
-                <a href="mailto:hello@luqni.dev" class="social-link">Contact</a>
+                <a href="https://github.com/luqni" target="_blank" class="social-link">GitHub</a>
+                <a href="mailto:mluqnibaehaqi@gmail.com" class="social-link">Contact</a>
             </div>
-            <p style="color: var(--text-secondary); font-size: 0.9rem;">&copy; 2026 Muhammad Luqni Baehaqi. All rights
+            <p style="color: var(--text-secondary); font-size: 0.9rem;" data-i18n="footer_rights">&copy; 2026 Muhammad
+                Luqni Baehaqi. All rights
                 reserved.</p>
         </footer>
     </div>
 
+    <script src="script.js"></script>
 </body>
 
 </html>
