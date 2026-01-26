@@ -310,6 +310,13 @@ body.light-mode header {
     background-clip: text;
     -webkit-text-fill-color: transparent;
     letter-spacing: -0.05em;
+    white-space: nowrap;
+    /* Prevent wrapping */
+}
+
+/* Default state (Desktop): Icon hidden via style attribute or class, Text visible */
+.mobile-icon {
+    display: none !important;
 }
 
 /* Hero Section */
@@ -670,6 +677,31 @@ footer {
         grid-template-columns: 1fr;
     }
 
+    .project-card {
+        padding: 1.5rem;
+        /* Reduce padding from 2.5rem */
+    }
+
+    .project-title {
+        font-size: 1.25rem;
+        /* Smaller title */
+        word-wrap: break-word;
+        /* Prevent overflows */
+    }
+
+    .project-desc {
+        font-size: 0.95rem;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Ensure icon sizes don't blow up */
+    .project-icon {
+        font-size: 2rem;
+        width: 60px;
+        height: 60px;
+        padding: 0.8rem;
+    }
+
     .hero-cta {
         flex-direction: column;
     }
@@ -698,8 +730,25 @@ footer {
 
     /* Compact 'Let's Connect' on mobile */
     header .btn-sm:not(.btn-icon) {
-        padding: 0.5rem 1rem;
-        font-size: 0.8rem;
+        padding: 0 0.8rem;
+        /* Reduced padding */
+        font-size: 0.9rem;
+        /* Ensure height for icon */
+        height: 40px;
+        width: 40px;
+        /* Make it square-ish like other icons */
+    }
+
+    /* Hide text on mobile */
+    header .btn-sm:not(.btn-icon) span {
+        display: none;
+    }
+
+    /* Show icon on mobile */
+    header .btn-sm:not(.btn-icon) .mobile-icon {
+        display: inline-block !important;
+        margin-right: 0 !important;
+        /* Center the icon */
     }
 
     /* CTA Section adjustments for mobile */
