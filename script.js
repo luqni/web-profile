@@ -73,13 +73,13 @@ function toggleLanguage() {
 }
 
 function toggleTheme() {
-    document.body.classList.toggle('light-mode');
-    const isLight = document.body.classList.contains('light-mode');
-    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    document.body.classList.toggle('dark-mode');
+    const isDark = document.body.classList.contains('dark-mode');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
 
     const themeBtn = document.getElementById('theme-toggle');
     if (themeBtn) {
-        themeBtn.textContent = isLight ? '🌙' : '☀️';
+        themeBtn.textContent = isDark ? '☀️' : '🌙';
     }
 }
 
@@ -109,12 +109,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Theme
     const savedTheme = localStorage.getItem('theme');
+    const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     const themeBtn = document.getElementById('theme-toggle');
-    if (savedTheme === 'light') {
-        document.body.classList.add('light-mode');
-        if (themeBtn) themeBtn.textContent = '🌙';
-    } else {
+
+    // Default to light, but respect saved preference or system preference if not saved
+    if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+        document.body.classList.add('dark-mode');
         if (themeBtn) themeBtn.textContent = '☀️';
+    } else {
+        document.body.classList.remove('dark-mode');
+        if (themeBtn) themeBtn.textContent = '🌙';
     }
 
     // Language
