@@ -204,7 +204,12 @@
         </footer>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        var script = document.createElement('script');
+        // Menambahkan timestamp unik agar browser selalu mengambil file terbaru
+        script.src = 'script.js?v=' + new Date().getTime();
+        document.head.appendChild(script);
+    </script>
 </body>
 
 </html>
