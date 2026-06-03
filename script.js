@@ -11,6 +11,7 @@ const translations = {
         "tech_stack": "Tech Stack & Expertise",
         "featured_projects": "Featured Projects",
         "fastingmate_desc": "FastingMate is a modern web application that helps Muslim women manage their Ramadan fasting debts with peace of mind and a plan. The app is designed to record, schedule, and track Qadha fasts, as well as automatically calculate Fidyah obligations.",
+        "loker_merah_putih_desc": "An aggregator platform powered by the Hermes AI agent as a crawler to update job vacancy information from various platforms.",
         "qanaah_desc": "Qanaah is a simple open-source application for recording, monitoring, and managing family expenses.",
         "demipena_desc": "QuranMap is an innovative digital platform designed to help Muslims, academics, and Quran memorizers visually understand the thematic structure of the Holy Book. Unlike traditional digital mushaf applications, QuranMap maps the contents of the Quran into a tiered, hierarchical structure, making it easier for users to see the relationships between topics, subtopics, and verses in an organized manner.",
         "cta_title": "Ready to build something amazing?",
@@ -32,6 +33,7 @@ const translations = {
         "tech_stack": "Keahlian & Teknologi",
         "featured_projects": "Proyek Unggulan",
         "fastingmate_desc": "FastingMate adalah aplikasi web modern yang membantu wanita Muslim mengelola hutang puasa Ramadhan mereka dengan tenang dan terencana. Aplikasi ini dirancang untuk mencatat, menjadwalkan, dan melacak puasa Qadha, serta secara otomatis menghitung kewajiban Fidyah.",
+        "loker_merah_putih_desc": "Platform agregator yang ditenagai oleh AI agent Hermes sebagai crawler yang akan mengupdate info lowongan kerja dari berbagai platform.",
         "qanaah_desc": "Qanaah adalah aplikasi open-source sederhana untuk mencatat, memantau, dan mengelola pengeluaran keluarga.",
         "demipena_desc": "QuranMap adalah platform digital inovatif yang dirancang untuk membantu umat Muslim, akademisi, dan penghafal Al-Qur'an dalam memahami struktur tematik Kitab Suci secara visual. Berbeda dengan aplikasi mushaf digital biasa, QuranMap memetakan isi Al-Qur'an ke dalam struktur hierarkis bertingkat, sehingga memudahkan pengguna untuk melihat keterkaitan antar topik, sub-topik, dan ayat secara terorganisir.",
         "cta_title": "Siap membangun sesuatu yang luar biasa?",
@@ -87,25 +89,33 @@ function toggleTheme() {
 function parallaxEffect() {
     const scrolled = window.scrollY;
 
-    // Move background blobs deeply
-    const glow1 = document.querySelector('.glow-1');
-    const glow2 = document.querySelector('.glow-2');
-
-    if (glow1) glow1.style.transform = `translate(0px, ${scrolled * 0.3}px)`;
-    if (glow2) glow2.style.transform = `translate(0px, ${scrolled * -0.2}px)`;
-
     // Hero Text Parallax (Fade out and move slightly)
     const heroContent = document.querySelector('.hero-content');
     if (heroContent) {
-        heroContent.style.transform = `translateY(${scrolled * 0.4}px)`;
-        heroContent.style.opacity = 1 - (scrolled / 700);
+        heroContent.style.transform = `translateY(${scrolled * 0.3}px)`;
+        heroContent.style.opacity = 1 - (scrolled / 600);
     }
 }
 
+// Scroll Reveal
+function initScrollReveal() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('reveal-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { rootMargin: '0px 0px -50px 0px', threshold: 0.1 });
+
+    document.querySelectorAll('.reveal-up').forEach(el => observer.observe(el));
+}
+
 // Initialize
-document.addEventListener('DOMContentLoaded', () => {
-    // Parallax
+function init() {
+    // Parallax & Reveal
     window.addEventListener('scroll', parallaxEffect);
+    initScrollReveal();
 
     // Theme
     const savedTheme = localStorage.getItem('theme');
@@ -130,4 +140,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Event Listeners
     if (themeBtn) themeBtn.addEventListener('click', toggleTheme);
     if (langBtn) langBtn.addEventListener('click', toggleLanguage);
-});
+}
+
+// Run init safely
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+} else {
+    init();
+}

@@ -77,25 +77,22 @@
 }
 
 :root {
-    /* Clean White Theme - Default */
-    --bg-color: #f8fafc;
+    /* Clean Blue & White Theme */
+    --bg-color: #ffffff;
     --card-bg: #ffffff;
-    --card-border: transparent;
-    /* Cleaner look without borders */
-    --text-primary: #1e293b;
-    --text-secondary: #64748b;
-    --accent-primary: #6366f1;
-    /* Keep Indigo for brand consistency but can be tweaked if needed */
-    --accent-secondary: #ec4899;
-    --accent-gradient: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+    --card-border: #e2e8f0;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --accent-primary: #2563eb;
+    --accent-secondary: #1e40af;
+    --accent-gradient: #2563eb;
     --glass-blur: blur(0px);
-    /* Remove blur for solid clean look, or keep minimal if using transparency */
     --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-    --radius-card: 24px;
-    --radius-btn: 50px;
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.05), 0 8px 10px -6px rgb(0 0 0 / 0.05);
+    --radius-card: 16px;
+    --radius-btn: 8px;
 }
 
 /* Dark Mode Overrides */
@@ -149,8 +146,10 @@ body.dark-mode .btn-primary {
 
 body {
     font-family: 'Outfit', sans-serif;
-    /* Clean geometric sans */
     background-color: var(--bg-color);
+    background-image: radial-gradient(var(--card-border) 1px, transparent 1px);
+    background-size: 32px 32px;
+    background-attachment: fixed;
     color: var(--text-primary);
     line-height: 1.7;
     overflow-x: hidden;
@@ -158,60 +157,14 @@ body {
     display: flex;
     flex-direction: column;
     position: relative;
-    /* Removed noise overlay for cleaner look */
 }
 
-/* Subtle background shape instead of noise */
-body::before {
-    content: "";
-    position: fixed;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.03) 0%, transparent 50%);
-    z-index: -1;
-    pointer-events: none;
-}
+/* Removed subtle background shape */
 
 /* Clean up light mode specific overrides since we are making it default */
 /* Removed body.light-mode blocks as they are now the default :root */
 
-/* Background Gradients */
-.background-glow {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    overflow: hidden;
-}
-
-.glow-spot {
-    position: absolute;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, rgba(0, 0, 0, 0) 70%);
-    border-radius: 50%;
-    filter: blur(80px);
-    /* Cleaner blur */
-    animation: float 20s infinite ease-in-out;
-    opacity: 0.5;
-}
-
-.glow-1 {
-    top: -10%;
-    left: -10%;
-    animation-delay: 0s;
-}
-
-.glow-2 {
-    bottom: -20%;
-    right: -5%;
-    background: radial-gradient(circle, rgba(236, 72, 153, 0.08) 0%, rgba(0, 0, 0, 0) 70%);
-    animation-delay: -5s;
-}
+/* Removed Background Gradients */
 
 /* Layout */
 .container {
@@ -229,11 +182,8 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000;
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    /* Very subtle border */
+    background: var(--bg-color);
+    border-bottom: 1px solid var(--card-border);
     margin-bottom: 2rem;
     padding-left: 2rem;
     padding-right: 2rem;
@@ -311,10 +261,7 @@ header {
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 700;
     font-size: 1.5rem;
-    background: var(--accent-gradient);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--accent-primary);
     letter-spacing: -0.05em;
 }
 
@@ -332,15 +279,14 @@ header {
 
 .availability-badge {
     display: inline-block;
-    background: rgba(99, 102, 241, 0.05);
-    border: 1px solid rgba(99, 102, 241, 0.1);
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
     color: var(--accent-primary);
     padding: 0.5rem 1.2rem;
     border-radius: 50px;
     font-size: 0.85rem;
     font-weight: 500;
     margin-bottom: 2rem;
-    backdrop-filter: blur(5px);
     letter-spacing: 0.02em;
 }
 
@@ -354,10 +300,7 @@ header {
 }
 
 .hero-content h1 span {
-    background: var(--accent-gradient);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--accent-primary);
 }
 
 .hero-subtitle {
@@ -411,7 +354,7 @@ header {
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: var(--shadow-xl);
+    box-shadow: var(--shadow-md);
     opacity: 0.9;
 }
 
@@ -475,7 +418,7 @@ header {
 
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
 }
 
@@ -492,25 +435,9 @@ header {
     box-shadow: var(--shadow-md);
 }
 
-.project-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(99, 102, 241, 0.03) 0%, rgba(236, 72, 153, 0.03) 100%);
-    opacity: 0;
-    transition: opacity 0.4s ease;
-}
-
 .project-card:hover {
     transform: translateY(-5px);
-    box-shadow: var(--shadow-xl);
-}
-
-.project-card:hover::before {
-    opacity: 1;
+    box-shadow: var(--shadow-lg);
 }
 
 .project-icon {
@@ -597,7 +524,8 @@ header {
     width: 100%;
     text-align: center;
     border-color: var(--accent-primary);
-    background: rgba(99, 102, 241, 0.1);
+    color: var(--accent-primary);
+    background: white;
 }
 
 .btn-project:hover {
@@ -655,20 +583,23 @@ footer {
     color: var(--text-primary);
 }
 
-/* Animations */
-@keyframes float {
-    0% {
-        transform: translate(0, 0);
-    }
-
-    50% {
-        transform: translate(30px, -30px);
-    }
-
-    100% {
-        transform: translate(0, 0);
-    }
+/* Natural Reveal Animation */
+.reveal-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
+.reveal-up.reveal-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+
+/* Animations Removed */
 
 @media (max-width: 768px) {
     .hero-content h1 {
